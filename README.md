@@ -25,17 +25,23 @@ Your task is to add functionality to the page such that when a user presses the 
 
 Note: You may want to look at the `keypress` event handler and check out the `which` attribute out the event.
 
+![](robot_simulator_storing_moves.gif)
+
 ### Move the robot
 
 The robot does **NOT** move until the user presses the `Move!` button. When this button is clicked, the direction at the top should be removed from the page and the robot should move in that direction. 
 
 Note: If the robot hits a wall, it will not move and you will instead see a `alert` saying "Clang! Hit a wall"
 
+![](robot_simulator_moving.gif)
+
 ### Delete a move
 
 When a user presses the 'delete' key on their keyboard, remove the **last** direction from the list of directions in the `ul`.
 
 Note: Remember edge cases - what happens when there's nothing to delete?
+
+![](robot_simulator_delete.gif)
 
 
 ### Bonus!
