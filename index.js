@@ -1,3 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
-  // CODE IN HERE!!!!
+  createGrid()
+  renderBot(currentPosition)
+
+  // ADD CODE HERE!
 })
