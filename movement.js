@@ -60,7 +60,9 @@ function move(direction){
   const moved = renderBot({ x, y })
   if (moved){
     currentPosition = { x, y }
+    return true;
   }
+  return false;
 }
 
 

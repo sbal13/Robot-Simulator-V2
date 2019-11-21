@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
+  let moveFlag = false;
+  let arr = [];
+  setInterval(movement, 500);
   createGrid()
   renderBot(currentPosition)
 
@@ -29,9 +32,31 @@ document.addEventListener("DOMContentLoaded", function(){
 
   document.addEventListener('click', function(event){
     if (event.target.id === 'move-button') {
+     /* //Single movement per click
       let listItem = document.querySelector('li')
       move(listItem.innerText)
       listItem.remove()
+      */
+      
+     
+      // clearInterval();
+      moveFlag = true;
+
     }
   })
+
+  function movement(){
+    if (moveFlag){
+      let listItems = document.querySelectorAll('li');
+      
+      if (listItems.length === 0){
+        moveFlag = false;
+        return;
+      }
+      move(listItems[0].innerText)
+      listItems[0].remove();
+       
+      
+    } 
+  }
 })
