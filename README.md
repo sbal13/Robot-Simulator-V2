@@ -1,5 +1,6 @@
 Robot Simulator
 ================
+*This DQ Lovingly Stolen From [The Masta Balasta](https://github.com/sbal13)*
 
 Welcome to Robot Simulator! We're building a digital space for a robot to move around in! We've got the robot and the robot's got the moves, but it's up to you figure out how to get the user to control how it moves!
 

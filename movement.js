@@ -1,14 +1,16 @@
+let currentPosition = { x: 0, y: 0 }
+let prevTile
 
-let currentPosition = { x: 0, y: 0}
-let prevTile;
-NodeList.prototype.find = Array.prototype.find
+function init() {
+  createGrid()
+  renderBot(currentPosition)
+}
 
-
-function createGrid(){
+function createGrid() {
   const board = document.querySelector("#board")
 
-  for (let i=0; i < 10; i++){
-    for (let j=0; j < 10; j++){
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
       board.insertAdjacentHTML("beforeend", `
         <div class="tile" data-x=${j} data-y=${i}></div>
       `)
@@ -16,22 +18,18 @@ function createGrid(){
   }
 }
 
-function renderBot(targetPosition){
-  const tiles = document.querySelectorAll(".tile")
+function renderBot(targetPosition) {
+  const newTile = document.querySelector(`.tile[data-x='${targetPosition.x}'][data-y='${targetPosition.y}']`)
 
-  const newTile = tiles.find(function(tile){
-    return parseInt(tile.dataset.x) === targetPosition.x && parseInt(tile.dataset.y) === targetPosition.y
-  })
-
-  if (!newTile){
+  if (!newTile) {
     alert("Clang! Hit a wall")
     return false
   } else {
-    if (prevTile){
-      prevTile.id = ""
-    } 
+    if (prevTile) {
+      prevTile.classList.remove("robot")
+    }
 
-    newTile.id = "robot"
+    newTile.classList.add("robot")
     prevTile = newTile
 
     return true
@@ -39,10 +37,10 @@ function renderBot(targetPosition){
 
 }
 
-function move(direction){
-  let x = currentPosition.x;
-  let y = currentPosition.y;
-  switch(direction){
+function move(direction) {
+  let { x, y } = currentPosition
+
+  switch (direction) {
     case "left":
       x--
       break;
@@ -58,7 +56,7 @@ function move(direction){
   }
 
   const moved = renderBot({ x, y })
-  if (moved){
+  if (moved) {
     currentPosition = { x, y }
   }
 }

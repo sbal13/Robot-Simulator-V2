@@ -14,10 +14,9 @@ body {
   height: 5vw;
 }
 
-#robot {
+.robot {
   background-image: url("https://cdn2.iconfinder.com/data/icons/cute-robot-3/512/937-23-128.png");
   background-repeat: no-repeat;
   background-size: 5vw 5vw;
   background-position: center;
-
 }
