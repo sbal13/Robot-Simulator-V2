@@ -1,22 +1,107 @@
 body {
-  display: grid;
-  grid-template-columns: 5fr 5fr;
+  font-family: 'Press Start 2P';
+  background: rgb(2,162,152);
+  background: linear-gradient(90deg, rgba(2,162,152,1) 0%, rgba(33,246,233,1) 100%);
+}
+
+main {
+  margin: 0 auto;
+  padding: 2em;
+  width: 80vw;
+  max-width: 70vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.75);
 }
 
 #board {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tile {
-  border-style: solid;
-  border-width: 1px;
-  height: 5vw;
+  background-color: lightgray;
+  position: relative;
+  flex-basis: calc(10% - 2px);
+  margin: 1px;
+  box-sizing: border-box;
+}
+
+.tile:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.goal {
+  background-color: rgb(254, 247, 177);
+  background-image: url("https://www.iconninja.com/files/218/604/841/star-retro-icon.png");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
 }
 
 .robot {
+  background-color: rgb(254, 247, 177);
   background-image: url("https://cdn2.iconfinder.com/data/icons/cute-robot-3/512/937-23-128.png");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: 90%;
   background-position: center;
+}
+
+.goal.robot {
+  background-color: rgb(255, 234, 0);
+}
+
+#control-panel {
+  margin-top: 1em;
+}
+
+#moves-container {
+  list-style: none;
+}
+
+#moves-container li {
+  display: inline-block;
+  color: #444444;
+  border: 3px solid #444444;
+  margin: 0.1em;
+  padding: 0.25em 1em;
+  background-color: rgba(199, 255, 143, 0.75);
+  box-shadow: inset -3px -3px 0 0 rgb(199, 255, 143);
+  transition: scale;
+}
+#moves-container li:first-child {
+  border: 3px solid red;
+  animation: move 1s ease-out;
+}
+
+@keyframes move {
+  0% { margin-left: 0;}
+  100% { margin-left: -42px;}
+}
+
+#control-panel button {
+  font-family: 'Press Start 2P';
+  font-size: 1em;
+  border: 3px solid black;
+  padding: 0.5em 1em;
+  background-color: rgba(252, 124, 124, 0.75);
+  box-shadow: inset -3px -3px 0 0 rgb(252, 124, 124);
+  transition: all 0.1s ease-in;
+}
+
+#control-panel button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 97, 97, 0.75);
+  box-shadow: inset -4px -4px 0 0 rgb(255, 97, 97);
+}
+
+#control-panel button:active {
+  cursor: pointer;
+  background-color: rgba(255, 97, 97, 0.75);
+  box-shadow: inset 4px 4px 0 0 rgb(255, 97, 97);
 }

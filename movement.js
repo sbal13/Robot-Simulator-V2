@@ -6,14 +6,29 @@ function init() {
   renderBot(currentPosition)
 }
 
+function randomTarget() {
+  function randBetween(start, end) {
+    return Math.floor(Math.random() * end) + start
+  }
+
+  return [randBetween(0, 10), randBetween(0, 10)]
+}
+
 function createGrid() {
   const board = document.querySelector("#board")
+  const [targetX, targetY] = randomTarget()
 
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      board.insertAdjacentHTML("beforeend", `
-        <div class="tile" data-x=${j} data-y=${i}></div>
-      `)
+  for (let y = 0; y < 10; y++) {
+    for (let x = 0; x < 10; x++) {
+      const tile = document.createElement('div')
+      tile.dataset.x = x
+      tile.dataset.y = y
+
+      tile.classList.add("tile")
+      if (x == targetX && y == targetY) {
+        tile.classList.add("goal")
+      }
+      board.appendChild(tile)
     }
   }
 }
@@ -60,6 +75,3 @@ function move(direction) {
     currentPosition = { x, y }
   }
 }
-
-
-
