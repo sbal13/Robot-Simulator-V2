@@ -11,7 +11,9 @@ Welcome to Robot Simulator! We're building a digital space for a robot to move a
 
 ## Task
 
-Open up the `index.html` file in your browser and please read **all** of the instructions before beginning.
+Open up the `index.html` file in your browser and please read **all** of the instructions before beginning. 
+
+You will be coding only within the `index.js` file - the `movement.js` file provides you with the code to move the robot. You can peek at this code if you're curious, but it is not advised that you edit it.
 
 We've got a robot displayed in a grid. The robot is capable of moving along this grid using a function called `move` which has been provided for you. When called with a string `left`, `down`, `right`, or `up`, the `move` function will move the robot in that direction. Try it out in your console! 
 
@@ -45,7 +47,4 @@ Note: think about using Event Delegation vs attaching individual event listeners
 
 ### Bonus!
 
-When the "Move!" button is clicked, the robot automatically moves according the the list of directions every half second. The directions should disappear from your list of directions as the robot moves. You may want to look into `setInterval` 
-
-
-You will be coding only within the `index.js` file - the `movement.js` file provides you with the code to move the robot. You can peek at this code if you're curious, but it is not advised that you edit it.
+When the "Move!" button is clicked, the robot automatically moves according the the list of directions every half second. The directions should disappear from your list of directions as the robot moves. You may want to look into `setInterval`  or `setTimeout`.
