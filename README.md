@@ -36,9 +36,9 @@ Note: If the robot hits a wall, it will not move and you will instead see a `ale
 
 ### Delete a move
 
-When a user presses the 'delete' key on their keyboard, remove the **last** direction from the list of directions in the `ul`.
+When a user clicks on a move, delete that move from the move list.
 
-Note: Remember edge cases - what happens when there's nothing to delete?
+Note: think about using Event Delegation vs attaching individual event listeners to each new list item. What edge cases do you need to handle?
 
 ![](robot_simulator_delete.gif)
 

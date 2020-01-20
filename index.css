@@ -1,12 +1,12 @@
 body {
   font-family: 'Press Start 2P';
   background: rgb(2,162,152);
-  background: linear-gradient(90deg, rgba(2,162,152,1) 0%, rgba(33,246,233,1) 100%);
+  background: linear-gradient(90deg, rgb(25, 216, 204) 0%, rgba(33,246,233,1) 100%);
 }
 
 main {
   margin: 0 auto;
-  padding: 2em;
+  padding: 2rem;
   width: 80vw;
   max-width: 70vh;
   background-color: #fff;
@@ -24,10 +24,8 @@ main {
 
 .tile {
   background-color: lightgray;
-  position: relative;
   flex-basis: calc(10% - 2px);
   margin: 1px;
-  box-sizing: border-box;
 }
 
 .tile:after {
@@ -36,23 +34,23 @@ main {
   padding-top: 100%;
 }
 
-.goal {
+.tile.goal, .tile.robot {
   background-color: rgb(254, 247, 177);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tile.goal {
   background-image: url("https://www.iconninja.com/files/218/604/841/star-retro-icon.png");
-  background-repeat: no-repeat;
   background-size: 70%;
-  background-position: center;
 }
 
-.robot {
-  background-color: rgb(254, 247, 177);
+.tile.robot {
   background-image: url("https://cdn2.iconfinder.com/data/icons/cute-robot-3/512/937-23-128.png");
-  background-repeat: no-repeat;
   background-size: 90%;
-  background-position: center;
 }
 
-.goal.robot {
+.tile.goal.robot {
   background-color: rgb(255, 234, 0);
 }
 
@@ -62,33 +60,26 @@ main {
 
 #moves-container {
   list-style: none;
+  padding: 0;
 }
 
 #moves-container li {
   display: inline-block;
   color: #444444;
   border: 3px solid #444444;
-  margin: 0.1em;
-  padding: 0.25em 1em;
+  margin: 0.1rem;
+  padding: 0.25em 1rem;
   background-color: rgba(199, 255, 143, 0.75);
   box-shadow: inset -3px -3px 0 0 rgb(199, 255, 143);
   transition: scale;
-}
-#moves-container li:first-child {
-  border: 3px solid red;
-  animation: move 1s ease-out;
-}
-
-@keyframes move {
-  0% { margin-left: 0;}
-  100% { margin-left: -42px;}
+  cursor: pointer;
 }
 
 #control-panel button {
   font-family: 'Press Start 2P';
-  font-size: 1em;
+  font-size: 1rem;
   border: 3px solid black;
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   background-color: rgba(252, 124, 124, 0.75);
   box-shadow: inset -3px -3px 0 0 rgb(252, 124, 124);
   transition: all 0.1s ease-in;
