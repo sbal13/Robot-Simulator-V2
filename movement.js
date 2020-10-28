@@ -1,67 +1,92 @@
-
-let currentPosition = { x: 0, y: 0}
+let currentPosition = { x: 0, y: 0 };
 let prevTile;
-NodeList.prototype.find = Array.prototype.find
 
+function init() {
+  createGrid();
+  setTarget();
+  renderBot(currentPosition);
+}
 
-function createGrid(){
-  const board = document.querySelector("#board")
+function randomTarget() {
+  function randBetween(start, end) {
+    return Math.floor(Math.random() * end) + start;
+  }
 
-  for (let i=0; i < 10; i++){
-    for (let j=0; j < 10; j++){
-      board.insertAdjacentHTML("beforeend", `
-        <div class="tile" data-x=${j} data-y=${i}></div>
-      `)
+  return [randBetween(0, 10), randBetween(0, 10)];
+}
+
+function setTarget() {
+  const [targetX, targetY] = randomTarget();
+  const targetTile = document.querySelector(
+    `.tile[data-x='${targetX}'][data-y='${targetY}']`
+  );
+  targetTile.classList.add("goal");
+}
+
+function createGrid() {
+  const board = document.querySelector("#board");
+
+  for (let y = 0; y < 10; y++) {
+    for (let x = 0; x < 10; x++) {
+      const tile = document.createElement("div");
+      tile.dataset.x = x;
+      tile.dataset.y = y;
+
+      tile.classList.add("tile");
+      board.appendChild(tile);
     }
   }
 }
 
-function renderBot(targetPosition){
-  const tiles = document.querySelectorAll(".tile")
+function renderBot(targetPosition) {
+  const newTile = document.querySelector(
+    `.tile[data-x='${targetPosition.x}'][data-y='${targetPosition.y}']`
+  );
 
-  const newTile = tiles.find(function(tile){
-    return parseInt(tile.dataset.x) === targetPosition.x && parseInt(tile.dataset.y) === targetPosition.y
-  })
-
-  if (!newTile){
-    alert("Clang! Hit a wall")
-    return false
+  if (!newTile) {
+    alert("Clang! Hit a wall");
+    return false;
   } else {
-    if (prevTile){
-      prevTile.id = ""
-    } 
+    if (prevTile) {
+      prevTile.classList.remove("robot");
+    }
 
-    newTile.id = "robot"
-    prevTile = newTile
+    newTile.classList.add("robot");
+    if (newTile.classList.contains("goal")) {
+      // 100ms timeout will render the css for the new position before the alert pops up
+      setTimeout(() => {
+        alert("Nice work! 🦾");
+        newTile.classList.remove("goal");
+        setTarget();
+      }, 100);
+    }
 
-    return true
+    prevTile = newTile;
+
+    return true;
   }
-
 }
 
-function move(direction){
-  let x = currentPosition.x;
-  let y = currentPosition.y;
-  switch(direction){
+function move(direction) {
+  let { x, y } = currentPosition;
+
+  switch (direction) {
     case "left":
-      x--
+      x--;
       break;
     case "right":
-      x++
+      x++;
       break;
     case "up":
-      y--
+      y--;
       break;
     case "down":
-      y++
+      y++;
       break;
   }
 
-  const moved = renderBot({ x, y })
-  if (moved){
-    currentPosition = { x, y }
+  const moved = renderBot({ x, y });
+  if (moved) {
+    currentPosition = { x, y };
   }
 }
-
-
-

@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function(){
-  createGrid()
-  renderBot(currentPosition)
+document.addEventListener("DOMContentLoaded", function() {
+  // initializes the board
+  init();
 
   // ADD CODE HERE!
-})
+});
